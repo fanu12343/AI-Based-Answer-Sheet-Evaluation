@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AI-powered answer sheet evaluation with OCR-ready preprocessing and NLP similarity scoring." />
+    <title>Evalora | AI Answer Evaluation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="ocr.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <nav><a class="brand" href="#">EVALORA<span>AI</span></a><div class="nav-status"><i></i> Evaluation engine online</div></nav>
+      <section class="hero">
+        <div class="eyebrow">NLP-powered assessment workspace</div>
+        <h1>Evaluate answers with<br /><em>clarity, not guesswork.</em></h1>
+        <p>Upload an answer sheet or paste a response. Evalora compares it to a reference answer using TF-IDF and cosine similarity, then produces a transparent score.</p>
+      </section>
+      <section class="workspace">
+        <div class="panel input-panel">
+          <div class="panel-head"><div><span class="step">01</span><h2>Reference answer</h2></div><span class="chip">Required</span></div>
+          <textarea id="reference" aria-label="Reference answer">Photosynthesis is the process by which green plants use sunlight, carbon dioxide and water to produce glucose and oxygen. It takes place mainly in the chloroplasts of leaf cells.</textarea>
+          <div class="panel-head answer-head"><div><span class="step">02</span><h2>Student response</h2></div><div class="upload-actions"><label class="upload" for="fileInput">Upload .txt<input id="fileInput" type="file" accept=".txt" /></label><label class="upload image-upload" for="imageInput">Upload answer image<input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp" /></label></div></div>
+          <textarea id="student" aria-label="Student response">Green plants prepare food in their leaves using sunlight, water and carbon dioxide. This process is called photosynthesis and releases oxygen.</textarea>
+          <div id="ocrProgress" class="ocr-progress" hidden><span id="ocrLabel">Reading answer sheet…</span><div><i id="ocrBar"></i></div></div>
+          <button id="evaluate">Evaluate response <span>→</span></button>
+          <p class="privacy">Demo mode · Your text stays in this browser</p>
+        </div>
+        <div class="panel result-panel" aria-live="polite">
+          <div class="result-top"><div><span class="step">03</span><h2>Evaluation report</h2></div><span id="status" class="status">Ready to score</span></div>
+          <div class="score-wrap"><div class="score-ring"><div><strong id="score">86</strong><small>/100</small></div></div><div><p class="score-label">Similarity score</p><p id="verdict" class="verdict">Strong conceptual match</p><p class="score-copy">The response covers the essential process and inputs clearly.</p></div></div>
+          <div class="metrics"><div><span>Cosine similarity</span><b id="similarity">0.86</b></div><div><span>Key concepts found</span><b id="concepts">4 / 5</b></div><div><span>Estimated grade</span><b id="grade">A</b></div></div>
+          <div class="audit"><div class="audit-title">Audit trail <span>Explainable scoring</span></div><ul id="auditList"><li><span class="check">✓</span>Shared vocabulary identified</li><li><span class="check">✓</span>Concept coverage analysed</li><li><span class="check">✓</span>Score normalised to 100</li></ul></div>
+        </div>
+      </section>
+      <section class="how"><div><span class="step">HOW IT WORKS</span><h2>Built for fair, fast evaluation.</h2></div><div class="flow"><article><b>01</b><h3>Extract</h3><p>OCR-ready pipeline converts scanned sheets into usable text.</p></article><article><b>02</b><h3>Compare</h3><p>TF-IDF weights meaningful terms and cosine similarity measures alignment.</p></article><article><b>03</b><h3>Explain</h3><p>Every score comes with an auditable breakdown for review.</p></article></div></section>
+      <footer><span>AI-Based Answer Sheet Evaluation System</span><span>Python · Django · OCR · NLP</span></footer>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
